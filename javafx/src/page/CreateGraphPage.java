@@ -71,7 +71,7 @@ public class CreateGraphPage {
                 ReadGraph readGraph = new ReadGraph();
                 ModelDetection modelDetection = new ModelDetection();
                 if (Integer.valueOf(verticeinput.getText()) < 50 && Integer.valueOf(edgesinput.getText()) < 50) {
-                    int[][] graph = readGraph.createGraph(
+                    int[][] graph = ReadGraph.createGraph(
                             Integer.valueOf(verticeinput.getText()), 
                             Integer.valueOf(edgesinput.getText())
                     );

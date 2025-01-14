@@ -19,9 +19,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.layout.HBox;
 import java.lang.System;
-import java.lang.Math;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 public class ToTheBitterEnd {

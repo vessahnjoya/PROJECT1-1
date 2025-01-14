@@ -1,8 +1,6 @@
 package components.convertTextGraph;
 
-import components.EdgeHandle.Edge;
 import components.EdgeHandle.Edges;
-import components.NodeHandle.Vertex;
 import components.NodeHandle.Vertices;
 import java.io.*;
 //import java.util.*;

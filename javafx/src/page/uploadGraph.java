@@ -58,7 +58,7 @@ public class uploadGraph {
                     try {
                         ReadGraph readGraph = new ReadGraph();
                         ModelDetection modelDetection = new ModelDetection();
-                        int[][] graph = readGraph.convertTextGraph(file);
+                        int[][] graph = ReadGraph.convertTextGraph(file);
                         if (modelDetection.detectModel(graph)) {
                             getGraph.setChromaticNum(modelDetection.getCN());
                         } else {

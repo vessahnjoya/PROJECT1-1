@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -67,7 +66,7 @@ public class uploadGraphPhase3 {
                 if (file != null) {
                     try {
                         ReadGraph readGraph = new ReadGraph();
-                        int[][] graph = readGraph.convertTextGraph(file);
+                        int[][] graph = ReadGraph.convertTextGraph(file);
                         solution = readGraph.getChromaticNumber();
                         if (modelDetection.detectModel(graph)) {
                             getGraph.setChromaticNum(modelDetection.getCN());
