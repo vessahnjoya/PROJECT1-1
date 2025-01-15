@@ -52,7 +52,7 @@ public class Solution {
                             nodeSet.getLocationX(j), nodeSet.getLocationY(j)
                     );
                     edgesSet.addEdge(edge);
-                    edge.setStroke(Color.BLACK);
+                    edge.setStroke(Color.WHITE);
                     pane.getChildren().addFirst(edge.getLine());
                 }
             }
