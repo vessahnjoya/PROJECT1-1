@@ -1,7 +1,6 @@
 package components.ModelDetection;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 
 public class ModelDetection {
@@ -50,8 +49,11 @@ public class ModelDetection {
             this.CN = this.graph.length;
             this.model = 2;
             return true;
+        } else if (this.isBipartite()){
+            this.CN = 2;
+            this.model = 3;
+            return true;
         }
-
         return false;
     };
 
@@ -114,6 +116,32 @@ public class ModelDetection {
         return true;
     }
 
+    public boolean isBipartite() {
+        int[] colors = new int[this.graph.length];
+        Arrays.fill(colors, 0);
+
+        for (int i = 0; i < this.graph.length; i++) {
+            if (colors[i] == 0) {
+                Queue<Integer> queue = new LinkedList<>();
+                queue.offer(i);
+                colors[i] = 1;
+
+                while (!queue.isEmpty()) {
+                    int node = queue.poll();
+                    for (int neighbor : this.nodeConnections.get(node)) {
+                        if (colors[neighbor] == 0) {
+                            colors[neighbor] = -colors[node];
+                            queue.offer(neighbor);
+                        } else if (colors[neighbor] == colors[node]) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         int[][] graph = {
                 {0,1,1,1,0,0,0,0,0,0},
@@ -136,25 +164,37 @@ public class ModelDetection {
                 {1, 1, 0, 1, 0}
         };
 
-        int[][] test = new int[6001][6001];
+        int[][] test = new int[12001][12001];
 
         // Connect the central vertex (vertex 0) to all other vertices
-        for (int i = 1; i < 6001; i++) {
+        for (int i = 1; i < 12001; i++) {
             test[0][i] = 1;
             test[i][0] = 1;
         }
 
         // Create the cycle for vertices 1 to 49
-        for (int i = 1; i < 6000; i++) {
+        for (int i = 1; i < 12000; i++) {
             test[i][i + 1] = 1;
             test[i + 1][i] = 1;
         }
         // Connect the last vertex in the cycle to the first (1 to 49)
-        test[1][6000] = 1;
-        test[6000][1] = 1;
+        test[1][12000] = 1;
+        test[12000][1] = 1;
+
+        int n = 12000; // Total vertices
+        int[][] newGraph = new int[n][n];
+
+        // Create edges between sets A (0-49) and B (50-99)
+        for (int i = 0; i < 6000; i++) {
+            for (int j = 6000; j < 12000; j++) {
+                newGraph[i][j] = 1; // Edge from A to B
+                newGraph[j][i] = 1; // Edge from B to A (undirected)
+            }
+        }
 
         ModelDetection obj = new ModelDetection();
 
-        System.out.println(obj.detectModel(test));
+        System.out.println(obj.detectModel(newGraph));
+        System.out.println(obj.getModel());
     }
 }

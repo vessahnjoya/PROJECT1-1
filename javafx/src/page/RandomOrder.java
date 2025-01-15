@@ -74,7 +74,7 @@ public class RandomOrder {
                                     nodeSet.getLocationX(j), nodeSet.getLocationY(j)
                             );
                             edgesSet.addEdge(edge);
-                            edge.setStroke(Color.BLACK);
+                            edge.setStroke(Color.WHITE);
                             pane.getChildren().add(0,edge.getLine());
                         }
                     }
@@ -147,7 +147,7 @@ public class RandomOrder {
                             nodeSet.getLocationX(j), nodeSet.getLocationY(j)
                     );
                     edgesSet.addEdge(edge);
-                    edge.setStroke(Color.BLACK);
+                    edge.setStroke(Color.WHITE);
                     pane.getChildren().addFirst(edge.getLine());
                 }
             }

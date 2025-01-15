@@ -190,9 +190,9 @@ public class ReadGraph{
     public static int[][] createGraph(int vertices, int edges) {
         // Creates array of each edge
         ColEdge[] e = new ColEdge[edges];
-
         // Randomizes the vertices connected to each edge
         Random rand = new Random();
+
         for (int i = 0; i < edges; i++) {
             e[i] = new ColEdge();
             boolean used = false;
@@ -209,7 +209,7 @@ public class ReadGraph{
             // Checks whether the edge has been made
             for (int j = 0; j <= i; j++) {
                 if(
-                    (e[j].u == u && e[j].v == v) 
+                    (e[j].u == u && e[j].v == v)
                     ||
                     (e[j].u == v && e[j].u == v)
                 ) {
